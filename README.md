@@ -12,14 +12,4 @@ These sometimes imply checks on the code itself. It's then interesting to know w
 
 This is probably useless since it's almost impossible to get it right. Well.  
 
-## Validate (from original)
-
-You can now validate the action by referencing `./` in a workflow in your repo (see [test.yml](.github/workflows/test.yml))
-
-```yaml
-uses: ./
-```
-
-See the [actions tab](https://github.com/actions/typescript-action/actions) for runs of this action! :rocket: 
-
 
