@@ -1433,6 +1433,7 @@ function run() {
             core.debug(`Got ${body}`);
             const checked = yield checks_1.checks(body);
             core.exportVariable('checked', checked);
+            core.setOutput('checked', checked);
         }
         catch (error) {
             core.setFailed(error.message);
