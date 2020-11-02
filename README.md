@@ -1,5 +1,15 @@
 # Get checklist from the body of a PR
 
+Sometimes, the body of a pull request contains things with this style:
+
+```
+- [X] Checks this.
+- [x] Check that.
+- [ ] Does not check this.
+```
+
+These sometimes imply checks on the code itself. It's then interesting to know which ones of these are checked, which ones are not.
+
 
 ## Validate (from original)
 
