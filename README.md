@@ -1,6 +1,6 @@
 # Get checklist from the body of a pull request
  
-Sometimes, the body of a pull request contains things like these
+Sometimes, the body of a pull request contains things like
 
 ```
 - [X] Checks this.
