@@ -8,4 +8,4 @@ Sometimes, the body of a pull request contains
 - [ ] Does not check this.
 ```
 
-We'll try to export that to variables.
+We'll try to export that to variables, and also set to output.
