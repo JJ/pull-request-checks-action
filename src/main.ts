@@ -8,6 +8,7 @@ async function run(): Promise<void> {
       core.debug(`Got ${body}`)
       const checked = await checks( body )
       core.exportVariable('checked', checked )
+      core.setOutput('checked',checked)
   } catch (error) {
       core.setFailed(error.message)
   }
