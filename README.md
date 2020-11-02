@@ -1,4 +1,4 @@
-# Get checklist from the body of a PR
+# Get checklist from the body of a pull request
 
 Sometimes, the body of a pull request contains things with this style:
 
