@@ -3,7 +3,7 @@
 Sometimes, the body of a pull request contains things like
 
 ```
-- [X] Checks this.
+- [X] ONE: Checks this.
 - [x] Check that.
 - [ ] Does not check this.
 ```
