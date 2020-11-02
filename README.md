@@ -8,7 +8,7 @@ Sometimes, the body of a pull request contains things with this style:
 - [ ] Does not check this.
 ```
 
-These sometimes imply checks on the code itself. It's then interesting to know which ones of these are checked, which ones are not.
+These sometimes imply checks on the code itself. It's then interesting to know which ones of these are checked, which ones are not. This action will return (and output) the result in an array called `checked`.
 
 
 ## Validate (from original)
