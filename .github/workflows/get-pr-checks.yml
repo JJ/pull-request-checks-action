@@ -5,10 +5,10 @@ jobs:
   get-checks:
     runs-on: ubuntu-latest
     steps:
-      - name: Checks body
+      - name: Verifies checklist in PR body
         id: pr_body_checks
         uses: JJ/pull-request-checks-action@main
       - name: Shows result
         env:
           OUTPUTS: ${{join(steps.pr_body_checks.outputs.*, '\n')}}
-        run: echo $OUTPUTS && echo $CONTRIBUTING
+        run: echo $OUTPUTS && echo $CONTRIBUTING && echo $check0
