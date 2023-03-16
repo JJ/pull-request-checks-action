@@ -6,6 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checks body
+        id: pr_body_checks
         uses: JJ/pull-request-checks-action@main
       - name: Shows result
-        run: echo ${GITHUB_ENV}
+        env:
+          OUTPUTS: ${{join(steps.pr_body_checks.outputs.*, '\n')}}
+        run: echo ${OUTPUTS}
