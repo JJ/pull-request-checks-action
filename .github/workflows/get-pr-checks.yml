@@ -1,4 +1,4 @@
-  name: Gets boxes checked
+name: Gets boxes checked
 on: [pull_request]
 
 jobs:
