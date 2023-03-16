@@ -1,6 +1,6 @@
 # Get results of a checklist from the body of a pull request [![build-test](https://github.com/JJ/pull-request-checks-action/actions/workflows/test.yml/badge.svg)](https://github.com/JJ/pull-request-checks-action/actions/workflows/test.yml)
 
-Sometimes, the body of a pull request contains
+Pull request templates sometimes contain checklists, like this one.
 
 ```markdown
 - [X] ONE: Checks this.
@@ -8,7 +8,7 @@ Sometimes, the body of a pull request contains
 - [ ] Does not check this.
 ```
 
-This will be exported to github action variables, and also set as step output.
+This will be exported to Github Action variables, and also set as step output.
 
 ## Use
 
