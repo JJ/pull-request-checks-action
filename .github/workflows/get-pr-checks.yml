@@ -10,6 +10,6 @@ jobs:
         uses: JJ/pull-request-checks-action@main
       - name: Shows result
         run: echo $CONTRIBUTING && echo $check0
-      - name: Contributing is compulsoryç
+      - name: Contributing is compulsory
         if: ${{ steps.pr_body_checks.outputs.CONTRIBUTING == false}}
         run: echo "Please read CONTRIBUTING.md" && exit 1
