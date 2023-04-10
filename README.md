@@ -8,7 +8,11 @@ Sometimes, the body of a pull request contains
 - [ ] Does not check this.
 ```
 
-This will be exported to github action variables, and also set as step output. The outputs will have the name of the label if it exists (`ONE`, in this case) or `check`+ index (starting with 0) otherwise. This one, for instance, will create the variables `ONE`, `checks1` and `checks2`; the first two of them will be set to `true`, the last one to `false`.
+This will be exported to github action variables, and also set as step output. The outputs will have the name of the label if it exists (`ONE`, in this case) or `check`+ index (starting with 0) otherwise.
+
+> The `check#` variable will not be set in the case it has a specific name.
+
+This one, for instance, will create the variables `ONE`, `checks1` and `checks2`; the first two of them will be set to `true`, the last one to `false`.
 
 ## Use
 
