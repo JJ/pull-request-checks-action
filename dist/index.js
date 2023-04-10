@@ -8,7 +8,7 @@ require('./sourcemap-register.js');/******/ (() => { // webpackBootstrap
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.checks = void 0;
-const checklist = /\s*-\s+\[\s*([xX]?)\s*\]\s+([A-Z]+:)?\s*/gm;
+const checklist = /\s*[-*+]\s+\[\s*([xX]?)\s*\]\s+([A-Z]+:)?\s*/gm;
 function checks(body) {
     const checked = {};
     let match = checklist.exec(body);
@@ -75,7 +75,7 @@ function run() {
                 const body = context.payload.pull_request.body;
                 const checked = (0, checks_1.checks)(body);
                 for (const i in checked) {
-                    console.debug(i, checked[i]);
+                    core.info(`${i} → ${checked[i]}`);
                     core.exportVariable(i, checked[i]);
                     core.setOutput(i, checked[i]);
                 }

@@ -8,11 +8,23 @@ Sometimes, the body of a pull request contains
 - [ ] Does not check this.
 ```
 
-This will be exported to github action variables, and also set as step output. The outputs will have the name of the label if it exists (`ONE`, in this case) or `check`+ index (starting with 0) otherwise.
+This will be exported to github action variables, and also set as step
+output. The outputs will have the name of the label if it exists (`ONE`, in this
+case) or `check`+ index (starting with 0) otherwise.
 
 > The `check#` variable will not be set in the case it has a specific name.
 
-This one, for instance, will create the variables `ONE`, `checks1` and `checks2`; the first two of them will be set to `true`, the last one to `false`.
+This one, for instance, will create the variables `ONE`, `checks1` and
+`checks2`; the first two of them will be set to `true`, the last one to `false`.
+
+You can use any list format
+
+```markdown
+* [X] Submit to the CoC
+- [x] CONTRIBUTING: Read the contribution agreement
++ [ ] Agree on license
+```
+
 
 ## Use
 
@@ -41,7 +53,9 @@ This would act on this [pull request template](.github/PULL_REQUEST_TEMPLATE.md)
 - [ ] CONTRIBUTING: I have checked out the [guide for contributors](CONTRIBUTING.md).
 ```
 
-And create an output and environment variable `check0` for the first item, another `CONTRIBUTING` for the second item. The action just prints the values of the environment variables, you can also use it to fail the flow like this:
+And create an output and environment variable `check0` for the first item,
+another `CONTRIBUTING` for the second item. The action just prints the values of
+the environment variables, you can also use it to fail the flow like this:
 
 ```yaml
       - name: Stops if not checked
@@ -55,3 +69,10 @@ And create an output and environment variable `check0` for the first item, anoth
 * `v1`:_starting to work again
 * `v2`: uses labels for checks, works.
 * `v3`: branding and documentation improvements, releasing for real
+* `v4`: use any list format
+
+
+## Aclnowledgements
+
+Thanks to [Marcos Martín](https://github.com/marcosrmartin) for his contribution
+to v4 release.
