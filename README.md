@@ -65,11 +65,11 @@ the environment variables, you can also use it to fail the flow like this:
 
 ## History
 
-* `release/v1`: first real release
-* `v1`:_starting to work again
+* `release/v1`: first real release.
+* `v1`:_starting to work again.
 * `v2`: uses labels for checks, works.
-* `v3`: branding and documentation improvements, releasing for real
-* `v4`: use any list format
+* `v3`: branding and documentation improvements, releasing for real.
+* `v4`: use any list format.
 
 
 ## Aclnowledgements
