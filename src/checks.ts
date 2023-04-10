@@ -1,4 +1,4 @@
-const checklist = /\s*-\s+\[\s*([xX]?)\s*\]\s+([A-Z]+:)?\s*/gm
+const checklist = /\s*[-*+]\s+\[\s*([xX]?)\s*\]\s+([A-Z]+:)?\s*/gm
 
 export function checks(body: NonNullable<string>): {[id: string]: boolean} {
   const checked: {[id: string]: boolean} = {}
