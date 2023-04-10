@@ -58,7 +58,7 @@ another `CONTRIBUTING` for the second item. The action just prints the values of
 the environment variables, you can also use it to fail the flow like this:
 
 ```yaml
-      - name: Stops if not checked
+      - name: Fails if not checked
         if: ${{ steps.pr_body_checks.outputs.CONTRIBUTING == false}}
         run: echo "Please read CONTRIBUTING.md" && exit 1
 ```
