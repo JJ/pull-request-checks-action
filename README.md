@@ -53,7 +53,7 @@ This would act on this [pull request template](.github/PULL_REQUEST_TEMPLATE.md)
 - [ ] CONTRIBUTING: I have checked out the [guide for contributors](CONTRIBUTING.md).
 ```
 
-And create an output and environment variable `check0` for the first item,
+and create an output and environment variable `check0` for the first item,
 another `CONTRIBUTING` for the second item. The action just prints the values of
 the environment variables, you can also use it to fail the flow like this:
 
