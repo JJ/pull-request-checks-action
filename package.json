@@ -41,6 +41,6 @@
     "jest-circus": "^29.5.0",
     "prettier": "2.8.8",
     "ts-jest": "^29.0.5",
-    "typescript": "^5.0.3"
+    "typescript": "^5.1.3"
   }
 }
