@@ -29,7 +29,7 @@
     "@actions/github": "^6.0.0"
   },
   "devDependencies": {
-    "@types/istanbul-lib-report": "^3.0.0",
+    "@types/istanbul-lib-report": "^3.0.3",
     "@types/jest": "^29.5.11",
     "@types/node": "^20.10.0",
     "@typescript-eslint/parser": "^5.62.0",
