@@ -25,7 +25,6 @@ You can use any list format
 + [ ] Agree on license
 ```
 
-
 ## Use
 
 Check  [the used workflow](.github/workflows/get-pr-checks.html) for
@@ -71,7 +70,6 @@ the environment variables, you can also use it to fail the flow like this:
 * `v3`: branding and documentation improvements, releasing for real.
 * `v4`: use any list format.
 * `v4.1`: :arrow_up: to latest runner and workflow versions
-
 
 ## Aclnowledgements
 
