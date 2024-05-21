@@ -40,7 +40,7 @@ jobs:
     steps:
       - name: Verifies checklist in PR body
         id: pr_body_checks
-        uses: JJ/pull-request-checks-action@v3
+        uses: JJ/pull-request-checks-action@v4.1
       - name: Shows result
         run: echo $CONTRIBUTING && echo $check0
 ```
