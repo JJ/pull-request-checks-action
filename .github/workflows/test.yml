@@ -7,6 +7,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          npm install
+          npm ci
       - run: |
           npm run all
