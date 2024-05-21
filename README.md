@@ -10,7 +10,7 @@ Sometimes, the body of a pull request contains
 
 This will be exported to github action variables, and also set as step
 output. The outputs will have the name of the label if it exists (`ONE`, in this
-case) or `check`+ index (starting with 0) otherwise.
+case) or `checks`+ index (starting with 0) otherwise.
 
 > The `check#` variable will not be set in the case it has a specific name.
 
