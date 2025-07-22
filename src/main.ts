@@ -2,7 +2,7 @@ import * as core from '@actions/core'
 import * as github from '@actions/github'
 import {checks} from './checks'
 
-function run(): void {
+export function run(): void {
   const context = github.context
   try {
     if (
@@ -36,4 +36,7 @@ function run(): void {
   }
 }
 
-run()
+// Only run if this module is executed directly (not imported for testing)
+if (require.main === module) {
+  run()
+}

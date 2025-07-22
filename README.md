@@ -29,12 +29,14 @@ You can use any list format
 
 ## Use
 
+This action works with both `pull_request` and `pull_request_target` events, as both provide the same `pull_request` payload structure that contains the PR body.
+
 Check  [the used workflow](.github/workflows/get-pr-checks.html) for
 an example; or this:
 
 ```yaml
 name: Obtain values for checklist
-on: [pull_request]
+on: [pull_request, pull_request_target]
 
 jobs:
   get-checks:
@@ -46,6 +48,11 @@ jobs:
       - name: Shows result
         run: echo $CONTRIBUTING && echo $check0
 ```
+
+### When to use `pull_request` vs `pull_request_target`
+
+- **`pull_request`**: Use for basic checks where you don't need access to secrets or write permissions. Safer for public repositories as it runs with limited permissions when triggered by forks.
+- **`pull_request_target`**: Use when you need access to secrets or repository write permissions. Runs in the context of the target branch with full permissions, but requires more careful security consideration for public repositories.
 
 This would act on this [pull request
 template](.github/PULL_REQUEST_TEMPLATE.md):
