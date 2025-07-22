@@ -1,6 +1,7 @@
 # Get results of a checklist from the body of a pull request [![build-test](https://github.com/JJ/pull-request-checks-action/actions/workflows/test.yml/badge.svg)](https://github.com/JJ/pull-request-checks-action/actions/workflows/test.yml)
 
-In order to focus the attention of whoever is doing a pull request, sometimes a checklist is included, along the lines of this one
+In order to focus the attention of whoever is doing a pull request, sometimes a
+checklist is included, along the lines of this one
 
 ```markdown
 - [X] ONE: Checks this.
@@ -8,7 +9,8 @@ In order to focus the attention of whoever is doing a pull request, sometimes a 
 - [ ] Does not check this.
 ```
 
-The first one has a tag, `ONE`; what this Github action does is to export the results of that checklist as GitHub action variables, and also set as step
+The first one has a tag, `ONE`; what this Github action does is to export the
+results of that checklist as GitHub action variables, and also set as step
 output. The outputs will have the name of the tag if it exists (`ONE`, in this
 case) or `checks`+ index (starting with 0) otherwise.
 
@@ -45,7 +47,8 @@ jobs:
         run: echo $CONTRIBUTING && echo $check0
 ```
 
-This would act on this [pull request template](.github/PULL_REQUEST_TEMPLATE.md):
+This would act on this [pull request
+template](.github/PULL_REQUEST_TEMPLATE.md):
 
 ```markdown
 - [ ] This PR refers to issue <!-- insert #issue here -->
