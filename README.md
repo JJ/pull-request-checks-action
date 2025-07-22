@@ -36,24 +36,7 @@ an example; or this:
 
 ```yaml
 name: Obtain values for checklist
-on: [pull_request]
-
-jobs:
-  get-checks:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Verifies checklist in PR body
-        id: pr_body_checks
-        uses: JJ/pull-request-checks-action@v4.1
-      - name: Shows result
-        run: echo $CONTRIBUTING && echo $check0
-```
-
-For `pull_request_target` events (useful when you need access to secrets or write permissions):
-
-```yaml
-name: Obtain values for checklist
-on: [pull_request_target]
+on: [pull_request, pull_request_target]
 
 jobs:
   get-checks:
