@@ -79,7 +79,8 @@ the environment variables, you can also use it to fail the flow like this:
 * `v2`: uses labels for checks, works.
 * `v3`: branding and documentation improvements, releasing for real.
 * `v4`: use any list format.
-* `v4.1`: :arrow_up: to latest runner and workflow versions
+  * `v4.1`: :arrow_up: to latest runner and workflow versions
+  * `v4.2`: Updates in dependencies, added doc support for `pull_request_target`
 
 ## Aclnowledgements
 
