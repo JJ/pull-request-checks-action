@@ -51,8 +51,15 @@ jobs:
 
 ### When to use `pull_request` vs `pull_request_target`
 
-- **`pull_request`**: Use for basic checks where you don't need access to secrets or write permissions. Safer for public repositories as it runs with limited permissions when triggered by forks.
-- **`pull_request_target`**: Use when you need access to secrets or repository write permissions. Runs in the context of the target branch with full permissions, but requires more careful security consideration for public repositories.
+- **`pull_request`**: Use for basic checks where you don't need access to
+  secrets or write permissions. Safer for public repositories as it runs with
+  limited permissions when triggered by forks.
+- **`pull_request_target`**: Use when you need access to secrets or repository
+  write permissions. Runs in the context of the target branch with full
+  permissions, but requires more careful security consideration for public
+  re<positories.
+
+## Setting up pull request templates 
 
 This would act on this [pull request
 template](.github/PULL_REQUEST_TEMPLATE.md):
