@@ -1,6 +1,6 @@
 # Get results of a checklist from the body of a pull request [![build-test](https://github.com/JJ/pull-request-checks-action/actions/workflows/test.yml/badge.svg)](https://github.com/JJ/pull-request-checks-action/actions/workflows/test.yml)
 
-Sometimes, the body of a pull request contains
+In order to focus the attention of whoever is doing a pull request, sometimes a checklist is included, along the lines of this one
 
 ```markdown
 - [X] ONE: Checks this.
@@ -8,8 +8,8 @@ Sometimes, the body of a pull request contains
 - [ ] Does not check this.
 ```
 
-This will be exported to github action variables, and also set as step
-output. The outputs will have the name of the label if it exists (`ONE`, in this
+The first one has a tag, `ONE`; what this Github action does is to export the results of that checklist as GitHub action variables, and also set as step
+output. The outputs will have the name of the tag if it exists (`ONE`, in this
 case) or `checks`+ index (starting with 0) otherwise.
 
 > The `check#` variable will not be set in the case it has a specific name.
