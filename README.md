@@ -44,7 +44,7 @@ jobs:
     steps:
       - name: Verifies checklist in PR body
         id: pr_body_checks
-        uses: JJ/pull-request-checks-action@v4.1
+        uses: JJ/pull-request-checks-action@v4.2
       - name: Shows result
         run: echo $CONTRIBUTING && echo $check0
 ```
@@ -85,3 +85,8 @@ the environment variables, you can also use it to fail the flow like this:
 
 Thanks to [Marcos Martín](https://github.com/marcosrmartin) for his contribution
 to v4 release.
+
+## LICENSE
+
+This is released under the [MIT license](LICENSE). Check out [the
+`licenses.txt`](dist/licenses.txt) file for additional licenses from dependencies.
