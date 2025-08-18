@@ -1,6 +1,11 @@
 name: 'check-list-extract'
 description: 'Extracts check list from pull request bodies'
 author: 'JJ Merelo'
+inputs:
+  excluded-users:
+    description: 'Comma-separated list of usernames to skip checks for (defaults to dependabot[bot])'
+    required: false
+    default: 'dependabot[bot]'
 branding:
   icon: 'check-square'
   color: 'green'
