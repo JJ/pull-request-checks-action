@@ -32,7 +32,7 @@ describe('User Exclusion', () => {
     })
 
     // Mock core.getInput to return default (empty string, so it uses the default)
-    mockCore.getInput.mockReturnValue('')
+    mockCore.getInput.mockReturnValue('dependabot[bot]')
 
     run()
 
