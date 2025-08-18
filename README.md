@@ -63,16 +63,6 @@ By default, this action skips processing for `dependabot[bot]` PRs to avoid fail
     excluded-users: 'dependabot[bot],renovate[bot],myself-dont-want-to-be-bothered-with-this'
 ```
 
-### When to use `pull_request` vs `pull_request_target`
-
-- **`pull_request`**: Use for basic checks where you don't need access to
-  secrets or write permissions. Safer for public repositories as it runs with
-  limited permissions when triggered by forks.
-- **`pull_request_target`**: Use when you need access to secrets or repository
-  write permissions. Runs in the context of the target branch with full
-  permissions, but requires more careful security consideration for public
-  re<positories.
-
 ## Setting up pull request templates
 
 This would act on this [pull request
