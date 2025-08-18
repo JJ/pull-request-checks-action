@@ -22,7 +22,7 @@ This one, for instance, will create the variables `ONE`, `checks1` and
 You can use any list format
 
 ```markdown
-- [x] Submit to the CoC
+- [x] Agree to the CoC
 
 * [x] CONTRIBUTING: Read the contribution agreement
 
@@ -46,7 +46,7 @@ jobs:
     steps:
       - name: Verifies checklist in PR body
         id: pr_body_checks
-        uses: JJ/pull-request-checks-action@v4.2
+        uses: JJ/pull-request-checks-action@v5
       - name: Shows result
         run: echo $CONTRIBUTING && echo $check0
 ```
@@ -58,9 +58,9 @@ By default, this action skips processing for `dependabot[bot]` PRs to avoid fail
 ```yaml
 - name: Verifies checklist in PR body
   id: pr_body_checks
-  uses: JJ/pull-request-checks-action@v4.2
+  uses: JJ/pull-request-checks-action@v5
   with:
-    excluded-users: 'dependabot[bot],renovate[bot],custom-bot'
+    excluded-users: 'dependabot[bot],renovate[bot],myself-dont-want-to-be-bothered-with-this'
 ```
 
 ### When to use `pull_request` vs `pull_request_target`
@@ -102,6 +102,7 @@ the environment variables, you can also use it to fail the flow like this:
 - `v4`: use any list format.
   - `v4.1`: :arrow_up: to latest runner and workflow versions
   - `v4.2`: Updates in dependencies, added doc support for `pull_request_target`
+- `v5`: Adds `excluded-users` input, which allows to exclude bots and others from raising an error.
 
 ## Aclnowledgements
 
