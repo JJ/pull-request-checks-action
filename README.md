@@ -49,6 +49,28 @@ jobs:
         run: echo $CONTRIBUTING && echo $check0
 ```
 
+### Excluding users
+
+By default, this action skips processing for `dependabot[bot]` PRs to avoid failing checks on automated dependency updates. You can customize which users to exclude:
+
+```yaml
+- name: Verifies checklist in PR body
+  id: pr_body_checks
+  uses: JJ/pull-request-checks-action@v4.2
+  with:
+    excluded-users: 'dependabot[bot],renovate[bot],custom-bot'
+```
+
+To disable user exclusion entirely, pass an empty string:
+
+```yaml
+- name: Verifies checklist in PR body
+  id: pr_body_checks
+  uses: JJ/pull-request-checks-action@v4.2
+  with:
+    excluded-users: ''
+```
+
 ### When to use `pull_request` vs `pull_request_target`
 
 - **`pull_request`**: Use for basic checks where you don't need access to

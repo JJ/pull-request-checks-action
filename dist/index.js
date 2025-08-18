@@ -75,10 +75,19 @@ const core = __importStar(__nccwpck_require__(7484));
 const github = __importStar(__nccwpck_require__(3228));
 const checks_1 = __nccwpck_require__(7943);
 function run() {
+    var _a;
     const context = github.context;
     try {
         if (context.payload.pull_request !== null &&
             context.payload.pull_request !== undefined) {
+            // Check if the PR author should be excluded
+            const excludedUsersInput = core.getInput('excluded-users') || 'dependabot[bot]';
+            const excludedUsers = excludedUsersInput.split(',').map(user => user.trim());
+            const prAuthor = (_a = context.payload.pull_request.user) === null || _a === void 0 ? void 0 : _a.login;
+            if (prAuthor && excludedUsers.includes(prAuthor)) {
+                core.info(`Skipping checks for excluded user: ${prAuthor}`);
+                return;
+            }
             if ('body' in context.payload.pull_request &&
                 context.payload.pull_request.body !== null &&
                 context.payload.pull_request.body !== undefined) {

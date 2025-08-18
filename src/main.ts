@@ -9,6 +9,19 @@ export function run(): void {
       context.payload.pull_request !== null &&
       context.payload.pull_request !== undefined
     ) {
+      // Check if the PR author should be excluded
+      const excludedUsersInput =
+        core.getInput('excluded-users') 
+      const excludedUsers = excludedUsersInput
+        .split(',')
+        .map(user => user.trim())
+      const prAuthor = context.payload.pull_request.user?.login
+
+      if (prAuthor && excludedUsers.includes(prAuthor)) {
+        core.info(`Skipping checks for excluded user: ${prAuthor}`)
+        return
+      }
+
       if (
         'body' in context.payload.pull_request &&
         context.payload.pull_request.body !== null &&
