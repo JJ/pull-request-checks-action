@@ -4,7 +4,7 @@ In order to focus the attention of whoever is doing a pull request, sometimes a
 checklist is included, along the lines of this one
 
 ```markdown
-- [X] ONE: Checks this.
+- [x] ONE: Checks this.
 - [x] Check that.
 - [ ] Does not check this.
 ```
@@ -22,16 +22,18 @@ This one, for instance, will create the variables `ONE`, `checks1` and
 You can use any list format
 
 ```markdown
-* [X] Submit to the CoC
-- [x] CONTRIBUTING: Read the contribution agreement
-+ [ ] Agree on license
+- [x] Submit to the CoC
+
+* [x] CONTRIBUTING: Read the contribution agreement
+
+- [ ] Agree on license
 ```
 
 ## Use
 
 This action works with both `pull_request` and `pull_request_target` events, as both provide the same `pull_request` payload structure that contains the PR body.
 
-Check  [the used workflow](.github/workflows/get-pr-checks.html) for
+Check [the used workflow](.github/workflows/get-pr-checks.html) for
 an example; or this:
 
 ```yaml
@@ -61,16 +63,6 @@ By default, this action skips processing for `dependabot[bot]` PRs to avoid fail
     excluded-users: 'dependabot[bot],renovate[bot],custom-bot'
 ```
 
-To disable user exclusion entirely, pass an empty string:
-
-```yaml
-- name: Verifies checklist in PR body
-  id: pr_body_checks
-  uses: JJ/pull-request-checks-action@v4.2
-  with:
-    excluded-users: ''
-```
-
 ### When to use `pull_request` vs `pull_request_target`
 
 - **`pull_request`**: Use for basic checks where you don't need access to
@@ -81,7 +73,7 @@ To disable user exclusion entirely, pass an empty string:
   permissions, but requires more careful security consideration for public
   re<positories.
 
-## Setting up pull request templates 
+## Setting up pull request templates
 
 This would act on this [pull request
 template](.github/PULL_REQUEST_TEMPLATE.md):
@@ -96,20 +88,20 @@ another `CONTRIBUTING` for the second item. The action just prints the values of
 the environment variables, you can also use it to fail the flow like this:
 
 ```yaml
-      - name: Fails if not checked
-        if: ${{ steps.pr_body_checks.outputs.CONTRIBUTING == false}}
-        run: echo "Please read CONTRIBUTING.md" && exit 1
+- name: Fails if not checked
+  if: ${{ steps.pr_body_checks.outputs.CONTRIBUTING == false}}
+  run: echo "Please read CONTRIBUTING.md" && exit 1
 ```
 
 ## History
 
-* `release/v1`: first real release.
-* `v1`: starting to work again.
-* `v2`: uses labels for checks, works.
-* `v3`: branding and documentation improvements, releasing for real.
-* `v4`: use any list format.
-  * `v4.1`: :arrow_up: to latest runner and workflow versions
-  * `v4.2`: Updates in dependencies, added doc support for `pull_request_target`
+- `release/v1`: first real release.
+- `v1`: starting to work again.
+- `v2`: uses labels for checks, works.
+- `v3`: branding and documentation improvements, releasing for real.
+- `v4`: use any list format.
+  - `v4.1`: :arrow_up: to latest runner and workflow versions
+  - `v4.2`: Updates in dependencies, added doc support for `pull_request_target`
 
 ## Aclnowledgements
 
