@@ -31,7 +31,7 @@
   "devDependencies": {
     "@types/istanbul-lib-report": "^3.0.3",
     "@types/jest": "^29.5.14",
-    "@types/node": "^24.0.15",
+    "@types/node": "^24.3.0",
     "@typescript-eslint/eslint-plugin": "^8.39.1",
     "@typescript-eslint/parser": "^8.39.1",
     "@typescript-eslint/typescript-estree": "^8.39.1",
