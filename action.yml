@@ -1,5 +1,5 @@
 name: 'check-list-extract'
-description: 'Extracts check list from pull request bodies'
+description: 'Extracts checklist from pull request bodies'
 author: 'JJ Merelo'
 inputs:
   excluded-users:
