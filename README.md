@@ -55,6 +55,8 @@ jobs:
 
 By default, this action skips processing for `dependabot[bot]` PRs to avoid failing checks on automated dependency updates. You can customize which users to exclude. If the excluded user is the one that has triggered the pull request, the variable `isExcludedUser` will be set to `true`.
 
+> Please note that the variable will not be defined otherwise, so you need to explicitly check for that value.
+
 ```yaml
 - name: Verifies checklist in PR body
   id: pr_body_checks
