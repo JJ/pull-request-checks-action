@@ -42,8 +42,8 @@ describe('User Exclusion', () => {
     )
 
     // Should not set any outputs or variables
-    expect(mockCore.setOutput).not.toHaveBeenCalled()
-    expect(mockCore.exportVariable).not.toHaveBeenCalled()
+    expect(mockCore.setOutput).toHaveBeenCalled()
+    expect(mockCore.exportVariable).toHaveBeenCalled() // it sets a variable to indicate that it's the default user
     expect(mockCore.setFailed).not.toHaveBeenCalled()
   })
 
@@ -74,8 +74,8 @@ describe('User Exclusion', () => {
     )
 
     // Should not set any outputs or variables
-    expect(mockCore.setOutput).not.toHaveBeenCalled()
-    expect(mockCore.exportVariable).not.toHaveBeenCalled()
+    expect(mockCore.setOutput).toHaveBeenCalled()
+    expect(mockCore.exportVariable).toHaveBeenCalled() // it sets a variable to indicate that it's the default user
     expect(mockCore.setFailed).not.toHaveBeenCalled()
   })
 
@@ -167,7 +167,7 @@ describe('User Exclusion', () => {
     )
 
     // Should not set any outputs or variables
-    expect(mockCore.setOutput).not.toHaveBeenCalled()
-    expect(mockCore.exportVariable).not.toHaveBeenCalled()
+    expect(mockCore.setOutput).toHaveBeenCalled()
+    expect(mockCore.exportVariable).toHaveBeenCalled() // Calls with "isExcludedUser", true
   })
 })

@@ -19,6 +19,8 @@ export function run(): void {
 
       if (prAuthor && excludedUsers.includes(prAuthor)) {
         core.info(`Skipping checks for excluded user: ${prAuthor}`)
+        core.exportVariable("isExcludedUser", true)
+        core.setOutput("isExcludedUser", true)
         return
       }
 
