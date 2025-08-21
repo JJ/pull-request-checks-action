@@ -106,7 +106,9 @@ the environment variables, you can also use it to fail the flow like this:
   - `v4.1`: :arrow_up: to latest runner and workflow versions
   - `v4.2`: Updates in dependencies, added doc support for `pull_request_target`
 - `v5`: Adds `excluded-users` input, which allows to exclude bots and others from raising an error.
-  - `v5.1`: :arrow_up: to latest runner and workflow versions, fix some dependency errors, adds `isExcludedUser` output and environment variable.
+  - `v5.1`: :arrow_up: to latest runner and workflow versions, fix
+    some dependency errors, adds `isExcludedUser` output and
+    environment variable.
 
 ## Aclnowledgements
 
