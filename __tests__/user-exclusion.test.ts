@@ -41,9 +41,9 @@ describe('User Exclusion', () => {
       'Skipping checks for excluded user: dependabot[bot]'
     )
 
-    // Should not set any outputs or variables
-    expect(mockCore.setOutput).toHaveBeenCalled()
-    expect(mockCore.exportVariable).toHaveBeenCalled() // it sets a variable to indicate that it's the default user
+    expect(mockCore.setOutput).toHaveBeenCalledWith('isExcludedUser', true)
+    expect(mockCore.exportVariable).toHaveBeenCalledWith('isExcludedUser', true)
+
     expect(mockCore.setFailed).not.toHaveBeenCalled()
   })
 
