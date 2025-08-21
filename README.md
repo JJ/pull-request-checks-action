@@ -53,7 +53,7 @@ jobs:
 
 ### Excluding users
 
-By default, this action skips processing for `dependabot[bot]` PRs to avoid failing checks on automated dependency updates. You can customize which users to exclude:
+By default, this action skips processing for `dependabot[bot]` PRs to avoid failing checks on automated dependency updates. You can customize which users to exclude. If the excluded user is the one that has triggered the pull request, the variable `isExcludedUser` will be set to `true`.
 
 ```yaml
 - name: Verifies checklist in PR body
@@ -61,7 +61,12 @@ By default, this action skips processing for `dependabot[bot]` PRs to avoid fail
   uses: JJ/pull-request-checks-action@v5
   with:
     excluded-users: 'dependabot[bot],renovate[bot],myself-dont-want-to-be-bothered-with-this'
+- name: Checking CONTRIBUTING is compulsory
+  if: ${{ ! steps.pr_body_checks.outputs.isExcludedUser == true && steps.pr_body_checks.outputs.CONTRIBUTING == false}}
+  run: echo "Please read CONTRIBUTING.md" && exit 1
 ```
+
+You will need to check the output of that variable yourself, before issuing an error, as shown above.
 
 ## Setting up pull request templates
 
@@ -93,7 +98,7 @@ the environment variables, you can also use it to fail the flow like this:
   - `v4.1`: :arrow_up: to latest runner and workflow versions
   - `v4.2`: Updates in dependencies, added doc support for `pull_request_target`
 - `v5`: Adds `excluded-users` input, which allows to exclude bots and others from raising an error.
-  - `v5.1`: :arrow_up: to latest runner and workflow versions, fix some dependency errors.
+  - `v5.1`: :arrow_up: to latest runner and workflow versions, fix some dependency errors, adds `isExcludedUser` output and environment variable.
 
 ## Aclnowledgements
 
