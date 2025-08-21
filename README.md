@@ -46,7 +46,7 @@ jobs:
     steps:
       - name: Verifies checklist in PR body
         id: pr_body_checks
-        uses: JJ/pull-request-checks-action@v5
+        uses: JJ/pull-request-checks-action@v5.1
       - name: Shows result
         run: echo $CONTRIBUTING && echo $check0
 ```
@@ -58,7 +58,7 @@ By default, this action skips processing for `dependabot[bot]` PRs to avoid fail
 ```yaml
 - name: Verifies checklist in PR body
   id: pr_body_checks
-  uses: JJ/pull-request-checks-action@v5
+  uses: JJ/pull-request-checks-action@v5.1
   with:
     excluded-users: 'dependabot[bot],renovate[bot],myself-dont-want-to-be-bothered-with-this'
 - name: Checking CONTRIBUTING is compulsory
