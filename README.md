@@ -53,7 +53,11 @@ jobs:
 
 ### Excluding users
 
-By default, this action skips processing for `dependabot[bot]` PRs to avoid failing checks on automated dependency updates. You can customize which users to exclude. If the excluded user is the one that has triggered the pull request, the variable `isExcludedUser` will be set to `true`.
+By default, this action skips processing for `dependabot[bot]` PRs to
+avoid failing checks on automated dependency updates. You can
+customize which users to exclude. If the excluded user is the one that
+has triggered the pull request, the variable `isExcludedUser` will be
+set to `true`.
 
 > Please note that the variable will not be defined otherwise, so you need to explicitly check for that value.
 
@@ -68,7 +72,9 @@ By default, this action skips processing for `dependabot[bot]` PRs to avoid fail
   run: echo "Please read CONTRIBUTING.md" && exit 1
 ```
 
-You will need to check the output of that variable yourself, before issuing an error, as shown above.
+You will need to check the output of that variable yourself, before
+issuing an error, as shown above. These outputs are also defined as
+environment variables, just in case you prefer that.
 
 ## Setting up pull request templates
 
