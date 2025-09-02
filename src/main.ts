@@ -11,7 +11,7 @@ export function run(): void {
     ) {
       // Check if the PR author should be excluded
       const excludedUsersInput =
-        core.getInput('excluded-users') 
+        core.getInput('excluded-users')
       const excludedUsers = excludedUsersInput
         .split(',')
         .map(user => user.trim())
