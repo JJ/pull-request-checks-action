@@ -12,7 +12,7 @@ jobs:
         env:
           IS_EXCLUDED_USER: steps.pr_body_checks.outputs.isExcludedUser
           CONTRIBUTING: steps.pr_body_checks.outputs.CONTRIBUTING
-        run: echo Values $CONTRIBUTING && echo $isExcludedUser
+        run: echo Values $CONTRIBUTING && echo $IS_EXCLUDED_USER
       - name: Checking CONTRIBUTING is compulsory
         if: ${{ ! steps.pr_body_checks.outputs.isExcludedUser == true && steps.pr_body_checks.outputs.CONTRIBUTING == false}}
         run: echo "Please read CONTRIBUTING.md" && exit 1
