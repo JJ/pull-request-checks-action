@@ -9,7 +9,7 @@ jobs:
         id: pr_body_checks
         uses: JJ/pull-request-checks-action@main
       - name: Shows result
-        run: echo $CONTRIBUTING && echo $check0 && echo $check2
+        run: echo $CONTRIBUTING && echo $check0 && echo $check2 && echo $isExcludedUser
       - name: Checking CONTRIBUTING is compulsory
         if: ${{ ! steps.pr_body_checks.outputs.isExcludedUser == true && steps.pr_body_checks.outputs.CONTRIBUTING == false}}
         run: echo "Please read CONTRIBUTING.md" && exit 1
