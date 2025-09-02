@@ -10,8 +10,8 @@ jobs:
         uses: JJ/pull-request-checks-action@main
       - name: Shows result
         env:
-          IS_EXCLUDED_USER: steps.pr_body_checks.outputs.isExcludedUser
-          CONTRIBUTING: steps.pr_body_checks.outputs.CONTRIBUTING
+          IS_EXCLUDED_USER: ${{ steps.pr_body_checks.outputs.isExcludedUser }}
+          CONTRIBUTING: ${{ steps.pr_body_checks.outputs.CONTRIBUTING }}
         run: echo "Values $CONTRIBUTING - $IS_EXCLUDED_USER - $isExcludedUser"
       - name: Checking CONTRIBUTING is compulsory
         if: ${{ ! steps.pr_body_checks.outputs.isExcludedUser == 'true' && steps.pr_body_checks.outputs.CONTRIBUTING == 'false'}}
