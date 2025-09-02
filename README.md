@@ -64,11 +64,11 @@ set to `true`.
 ```yaml
 - name: Verifies checklist in PR body
   id: pr_body_checks
-  uses: JJ/pull-request-checks-action@v5.1
+  uses: JJ/pull-request-checks-action@v5.1.1
   with:
     excluded-users: 'dependabot[bot],renovate[bot],myself-dont-want-to-be-bothered-with-this'
 - name: Checking CONTRIBUTING is compulsory
-  if: ${{ ! steps.pr_body_checks.outputs.isExcludedUser == true && steps.pr_body_checks.outputs.CONTRIBUTING == false}}
+  if: ${{ ! steps.pr_body_checks.outputs.isExcludedUser == 'true' && steps.pr_body_checks.outputs.CONTRIBUTING == 'false'}}
   run: echo "Please read CONTRIBUTING.md" && exit 1
 ```
 
@@ -109,6 +109,7 @@ the environment variables, you can also use it to fail the flow like this:
   - `v5.1`: :arrow_up: to latest runner and workflow versions, fix
     some dependency errors, adds `isExcludedUser` output and
     environment variable.
+  - `v5.1.1`: Basically documentation improvements.
 
 ## Aclnowledgements
 
