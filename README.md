@@ -46,7 +46,7 @@ jobs:
     steps:
       - name: Verifies checklist in PR body
         id: pr_body_checks
-        uses: JJ/pull-request-checks-action@v5.1
+        uses: JJ/pull-request-checks-action@v5.1.1
       - name: Shows result
         run: echo $CONTRIBUTING && echo $check0
 ```
@@ -92,7 +92,7 @@ the environment variables, you can also use it to fail the flow like this:
 
 ```yaml
 - name: Fails if not checked
-  if: ${{ steps.pr_body_checks.outputs.CONTRIBUTING == false}}
+  if: ${{ steps.pr_body_checks.outputs.CONTRIBUTING == 'false'}}
   run: echo "Please read CONTRIBUTING.md" && exit 1
 ```
 
