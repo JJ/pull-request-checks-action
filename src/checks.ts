@@ -1,6 +1,8 @@
 const checklist = /\s*[-*+]\s+\[\s*([xX]?)\s*\]\s+([A-Z]+:)?\s*/gm
 
 export function checks(body: NonNullable<string>): {[id: string]: boolean} {
+  // Reset regex state to ensure consistent parsing across multiple calls
+  checklist.lastIndex = 0
   const checked: {[id: string]: boolean} = {}
   let match = checklist.exec(body)
   let index = 0

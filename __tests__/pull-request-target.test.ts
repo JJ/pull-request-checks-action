@@ -10,7 +10,7 @@ describe('Pull Request Target Compatibility', () => {
         body: `
 # Test PR
 - [x] META: I agree to something
-- [x] This is checked  
+- [x] This is checked
 - [ ] This is not checked
 `,
         number: 123,
@@ -21,7 +21,7 @@ describe('Pull Request Target Compatibility', () => {
     const pullRequestTargetPayload = {
       pull_request: {
         body: `
-# Test PR  
+# Test PR
 - [x] META: I agree to something
 - [x] This is checked
 - [ ] This is not checked
