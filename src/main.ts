@@ -10,8 +10,7 @@ export function run(): void {
       context.payload.pull_request !== undefined
     ) {
       // Check if the PR author should be excluded
-      const excludedUsersInput =
-        core.getInput('excluded-users')
+      const excludedUsersInput = core.getInput('excluded-users')
       const excludedUsers = excludedUsersInput
         .split(',')
         .map(user => user.trim())
@@ -19,8 +18,8 @@ export function run(): void {
 
       if (prAuthor && excludedUsers.includes(prAuthor)) {
         core.info(`Skipping checks for excluded user: ${prAuthor}`)
-        core.exportVariable("isExcludedUser", true)
-        core.setOutput("isExcludedUser", true)
+        core.exportVariable('isExcludedUser', true)
+        core.setOutput('isExcludedUser', true)
         return
       }
 
@@ -31,11 +30,16 @@ export function run(): void {
       ) {
         const body: string = context.payload.pull_request.body
         const checked: {[id: string]: boolean} = checks(body)
+        let all_checked = true
         for (const i in checked) {
-          core.info(`${i} → ${checked[i]}`)
-          core.exportVariable(i, checked[i])
-          core.setOutput(i, checked[i])
+          const is_checked: boolean = checked[i]
+          core.info(`${i} → ${is_checked}`)
+          core.exportVariable(i, is_checked)
+          core.setOutput(i, is_checked)
+          all_checked = all_checked && is_checked
         }
+        core.exportVariable('allChecked', all_checked)
+        core.setOutput('allChecked', all_checked)
       } else {
         core.setFailed('No body to check or anything else')
       }

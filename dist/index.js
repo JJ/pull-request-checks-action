@@ -81,11 +81,15 @@ function run() {
         if (context.payload.pull_request !== null &&
             context.payload.pull_request !== undefined) {
             // Check if the PR author should be excluded
-            const excludedUsersInput = core.getInput('excluded-users') || 'dependabot[bot]';
-            const excludedUsers = excludedUsersInput.split(',').map(user => user.trim());
+            const excludedUsersInput = core.getInput('excluded-users');
+            const excludedUsers = excludedUsersInput
+                .split(',')
+                .map(user => user.trim());
             const prAuthor = (_a = context.payload.pull_request.user) === null || _a === void 0 ? void 0 : _a.login;
             if (prAuthor && excludedUsers.includes(prAuthor)) {
                 core.info(`Skipping checks for excluded user: ${prAuthor}`);
+                core.exportVariable("isExcludedUser", true);
+                core.setOutput("isExcludedUser", true);
                 return;
             }
             if ('body' in context.payload.pull_request &&
@@ -93,11 +97,16 @@ function run() {
                 context.payload.pull_request.body !== undefined) {
                 const body = context.payload.pull_request.body;
                 const checked = (0, checks_1.checks)(body);
+                let all_checked = true;
                 for (const i in checked) {
-                    core.info(`${i} → ${checked[i]}`);
-                    core.exportVariable(i, checked[i]);
-                    core.setOutput(i, checked[i]);
+                    const is_checked = checked[i];
+                    core.info(`${i} → ${is_checked}`);
+                    core.exportVariable(i, is_checked);
+                    core.setOutput(i, is_checked);
+                    all_checked = all_checked && is_checked;
                 }
+                core.exportVariable("allChecked", all_checked);
+                core.setOutput("allChecked", all_checked);
             }
             else {
                 core.setFailed('No body to check or anything else');
