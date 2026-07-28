@@ -1,6 +1,6 @@
 import * as core from '@actions/core'
 import * as github from '@actions/github'
-import {checks} from './checks'
+import {checks} from './checks.js'
 
 export function run(): void {
   const context = github.context
@@ -56,6 +56,6 @@ export function run(): void {
 }
 
 // Only run if this module is executed directly (not imported for testing)
-if (require.main === module) {
+if (import.meta.url === `file://${process.argv[1]}`) {
   run()
 }

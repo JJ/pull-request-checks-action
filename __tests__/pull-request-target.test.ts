@@ -40,8 +40,8 @@ describe('Pull Request Target Compatibility', () => {
     expect(typeof pullRequestTargetPayload.pull_request.body).toBe('string')
   })
 
-  test('Checklist parsing works identically regardless of event source', () => {
-    const {checks} = require('../src/checks')
+  test('Checklist parsing works identically regardless of event source', async () => {
+    const {checks} = await import('../src/checks.js')
 
     const prBody = `
 # Test PR

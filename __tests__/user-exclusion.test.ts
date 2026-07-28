@@ -1,14 +1,32 @@
-import * as core from '@actions/core'
-import * as github from '@actions/github'
-import {run} from '../src/main'
+import {jest} from '@jest/globals'
 
 // Mock the @actions/core module
-jest.mock('@actions/core')
-const mockCore = core as jest.Mocked<typeof core>
+jest.unstable_mockModule('@actions/core', () => ({
+  getInput: jest.fn(),
+  info: jest.fn(),
+  setOutput: jest.fn(),
+  exportVariable: jest.fn(),
+  setFailed: jest.fn()
+}))
 
-// Mock the @actions/github module
-jest.mock('@actions/github')
-const mockGithub = github as jest.Mocked<typeof github>
+// Mock the @actions/github module and expose a mutable context
+jest.unstable_mockModule('@actions/github', () => ({
+  context: {}
+}))
+
+const core = await import('@actions/core')
+const github = await import('@actions/github')
+const {run} = await import('../src/main.js')
+const mockCore = core as jest.Mocked<typeof core>
+type MockContext = {
+  payload?: {
+    pull_request: {
+      user?: {login?: string}
+      body?: string
+    }
+  }
+}
+const mockGithub = github as unknown as {context: MockContext}
 
 describe('User Exclusion', () => {
   beforeEach(() => {
@@ -17,19 +35,12 @@ describe('User Exclusion', () => {
 
   test('skips checks for dependabot by default', () => {
     // Mock the GitHub context with a dependabot PR
-    Object.defineProperty(mockGithub, 'context', {
-      value: {
-        payload: {
-          pull_request: {
-            user: {
-              login: 'dependabot[bot]'
-            },
-            body: '- [x] TEST: Some check'
-          }
-        }
-      },
-      writable: true
-    })
+    mockGithub.context.payload = {
+      pull_request: {
+        user: {login: 'dependabot[bot]'},
+        body: '- [x] TEST: Some check'
+      }
+    }
 
     // Mock core.getInput to return default (empty string, so it uses the default)
     mockCore.getInput.mockReturnValue('dependabot[bot]')
@@ -49,19 +60,12 @@ describe('User Exclusion', () => {
 
   test('skips checks for custom excluded users', () => {
     // Mock the GitHub context with a custom user PR
-    Object.defineProperty(mockGithub, 'context', {
-      value: {
-        payload: {
-          pull_request: {
-            user: {
-              login: 'renovate[bot]'
-            },
-            body: '- [x] TEST: Some check'
-          }
-        }
-      },
-      writable: true
-    })
+    mockGithub.context.payload = {
+      pull_request: {
+        user: {login: 'renovate[bot]'},
+        body: '- [x] TEST: Some check'
+      }
+    }
 
     // Mock core.getInput to return custom excluded users
     mockCore.getInput.mockReturnValue('renovate[bot],custom-bot')
@@ -81,19 +85,12 @@ describe('User Exclusion', () => {
 
   test('processes checks for non-excluded users', () => {
     // Mock the GitHub context with a regular user PR
-    Object.defineProperty(mockGithub, 'context', {
-      value: {
-        payload: {
-          pull_request: {
-            user: {
-              login: 'regular-user'
-            },
-            body: '- [x] TEST: Some check\n- [ ] ANOTHER: Another check'
-          }
-        }
-      },
-      writable: true
-    })
+    mockGithub.context.payload = {
+      pull_request: {
+        user: {login: 'regular-user'},
+        body: '- [x] TEST: Some check\n- [ ] ANOTHER: Another check'
+      }
+    }
 
     // Mock core.getInput to return default
     mockCore.getInput.mockReturnValue('')
@@ -114,16 +111,11 @@ describe('User Exclusion', () => {
 
   test('handles PRs without user information gracefully', () => {
     // Mock the GitHub context with a PR without user info
-    Object.defineProperty(mockGithub, 'context', {
-      value: {
-        payload: {
-          pull_request: {
-            body: '- [x] TEST: Some check'
-          }
-        }
-      },
-      writable: true
-    })
+    mockGithub.context.payload = {
+      pull_request: {
+        body: '- [x] TEST: Some check'
+      }
+    }
 
     // Mock core.getInput to return default
     mockCore.getInput.mockReturnValue('')
@@ -142,19 +134,12 @@ describe('User Exclusion', () => {
 
   test('handles whitespace in excluded users list', () => {
     // Mock the GitHub context with a user that has whitespace in the config
-    Object.defineProperty(mockGithub, 'context', {
-      value: {
-        payload: {
-          pull_request: {
-            user: {
-              login: 'renovate[bot]'
-            },
-            body: '- [x] TEST: Some check'
-          }
-        }
-      },
-      writable: true
-    })
+    mockGithub.context.payload = {
+      pull_request: {
+        user: {login: 'renovate[bot]'},
+        body: '- [x] TEST: Some check'
+      }
+    }
 
     // Mock core.getInput to return excluded users with extra whitespace
     mockCore.getInput.mockReturnValue(' renovate[bot] , custom-bot ')

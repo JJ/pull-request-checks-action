@@ -1,21 +1,27 @@
+import {jest} from '@jest/globals'
+
 // Mock the @actions/core module with explicit jest.fn implementations
-jest.mock('@actions/core', () => ({
-  ...jest.requireActual('@actions/core'),
-  setOutput: jest.fn(),
-  exportVariable: jest.fn(),
-  getInput: jest.fn(),
-  info: jest.fn(),
-  setFailed: jest.fn()
-}))
+jest.unstable_mockModule('@actions/core', () => {
+  const actual =
+    jest.requireActual<typeof import('@actions/core')>('@actions/core')
+  return {
+    ...actual,
+    setOutput: jest.fn(),
+    exportVariable: jest.fn(),
+    getInput: jest.fn(),
+    info: jest.fn(),
+    setFailed: jest.fn()
+  }
+})
 
 // Mock the @actions/github module and expose a mutable context
-jest.mock('@actions/github', () => ({
+jest.unstable_mockModule('@actions/github', () => ({
   context: {}
 }))
 
 // Import the mocked modules (they will receive the mocks above)
-import * as core from '@actions/core'
-import * as github from '@actions/github'
+const core = await import('@actions/core')
+const github = await import('@actions/github')
 const mockCore = core as jest.Mocked<typeof core>
 type MockContext = {
   payload?: {
@@ -45,12 +51,11 @@ describe('Checks for all checked', () => {
       }
     }
 
-    const {run} = await import('../src/main')
+    const {run} = await import('../src/main.js')
     run()
 
     expect(mockCore.setOutput).toHaveBeenCalledWith('allChecked', false)
     expect(mockCore.exportVariable).toHaveBeenCalledWith('allChecked', false)
-
   })
 
   test('Succeeds when all are checked', async () => {
@@ -62,11 +67,10 @@ describe('Checks for all checked', () => {
       }
     }
 
-    const {run} = await import('../src/main')
+    const {run} = await import('../src/main.js')
     run()
 
     expect(mockCore.setOutput).toHaveBeenCalledWith('allChecked', true)
     expect(mockCore.exportVariable).toHaveBeenCalledWith('allChecked', true)
-
   })
 })
