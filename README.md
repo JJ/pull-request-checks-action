@@ -46,7 +46,7 @@ jobs:
     steps:
       - name: Verifies checklist in PR body
         id: pr_body_checks
-        uses: JJ/pull-request-checks-action@v5.2
+        uses: JJ/pull-request-checks-action@v5.2.1
       - name: Shows result
         run: echo $CONTRIBUTING && echo $check0
 ```
@@ -64,7 +64,7 @@ set to `true`.
 ```yaml
 - name: Verifies checklist in PR body
   id: pr_body_checks
-  uses: JJ/pull-request-checks-action@v5.2
+  uses: JJ/pull-request-checks-action@v5.2.1
   with:
     excluded-users: 'dependabot[bot],renovate[bot],myself-dont-want-to-be-bothered-with-this'
 - name: Checking CONTRIBUTING is compulsory
@@ -111,6 +111,8 @@ the environment variables, you can also use it to fail the flow like this:
     environment variable.
   - `v5.1.1`: Basically documentation improvements.
   - `v5.2`: Additional variable if something has not been checked
+  - `v5.2.1`: Upgrades `@github/actions` to version 9 with extensive internal
+    refactoring, no user-facing changes.
 
 ## Aclnowledgements
 
