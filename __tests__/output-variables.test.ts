@@ -1,18 +1,15 @@
 import {jest} from '@jest/globals'
 
-// Mock the @actions/core module with explicit jest.fn implementations
-jest.unstable_mockModule('@actions/core', () => {
-  const actual =
-    jest.requireActual<typeof import('@actions/core')>('@actions/core')
-  return {
-    ...actual,
-    setOutput: jest.fn(),
-    exportVariable: jest.fn(),
-    getInput: jest.fn(),
-    info: jest.fn(),
-    setFailed: jest.fn()
-  }
-})
+// Mock the @actions/core module with explicit jest.fn implementations.
+// @actions/core is ESM-only (no CJS export condition), so jest.requireActual
+// can't resolve it; only the functions src/main.ts actually uses are mocked.
+jest.unstable_mockModule('@actions/core', () => ({
+  setOutput: jest.fn(),
+  exportVariable: jest.fn(),
+  getInput: jest.fn(),
+  info: jest.fn(),
+  setFailed: jest.fn()
+}))
 
 // Mock the @actions/github module and expose a mutable context
 jest.unstable_mockModule('@actions/github', () => ({
